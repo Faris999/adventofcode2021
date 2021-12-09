@@ -16,10 +16,10 @@ with open('day4input.txt', 'r') as f:
 def check_win(board):
     board = marked[board]
     for i in range(5):
-        if board[i][0] and board[i][1] and board[i][2] and board[i][3] and board[i][4] and board[i][0]:
+        if all(board[i]):
             return True
     for i in range(5):
-        if board[0][i] and board[1][i] and board[2][i] and board[3][i] and board[4][i] and board[0][i]:
+        if all(board[j][i] for j in range(5)):
             return True
     return False
 

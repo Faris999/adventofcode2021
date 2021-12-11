@@ -42,3 +42,24 @@ for row in coordinate_map:
             count += 1
 
 print(count)
+
+# diagonal lines
+diagonal_lines = [line for line in lines if line[0][0] != line[1][0] and line[0][1] != line[1][1]]
+for line in diagonal_lines:
+    # swap if descending
+    if line[0][0] > line[1][0]:
+        line = (line[1], line[0])
+    for i, x in enumerate(range(line[0][0], line[1][0] + 1)):
+        if line[0][1] > line[1][1]:
+            y = line[0][1] - i
+        else:
+            y = line[0][1] + i
+        coordinate_map[y][x] += 1
+
+count = 0
+for row in coordinate_map:
+    for col in row:
+        if col > 1:
+            count += 1
+
+print(count)
